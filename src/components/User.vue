@@ -9,6 +9,7 @@
     <h1>The User Component</h1>
     <p>I'm an awesome user</p>
     <button @click="changeName">Change my Name</button>
+    <p>User Age: {{ age }}</p>
     <hr />
     <div class="row">
       <div class="col-xs-12 col-sm-6">

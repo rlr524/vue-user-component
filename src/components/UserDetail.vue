@@ -11,6 +11,7 @@
 
 <script>
 /** Note the camelCase of the prop name here and best practice of identifying the prop value's type as well as if it is required */
+import { eventBus } from "../main";
 export default {
   name: "UserDetail",
   props: {
@@ -35,6 +36,14 @@ export default {
       this.userName = "Madison";
       this.$emit("nameWasReset", this.userName);
     },
+  },
+  // Will listen to events created on the eventBus Vue instance we created in main.js. We do this with the created() lifecycle
+  // method and pass in our event (emitted from UserEdit) as well as a callback to the event data
+  // Now we are passing this "edit age" event using the eventBus vs directly in our components
+  created() {
+    eventBus.$on("ageWasEdited", age => {
+      this.userAge = age;
+    });
   },
 };
 </script>
